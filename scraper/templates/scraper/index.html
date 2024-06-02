@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Scraper</title>
+</head>
+<body>
+    <h1>Web Scraper</h1>
+    <form action="{% url 'scrape' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Scrape Data</button>
+    </form>
+    <h2>Scraped Data:</h2>
+    <ul>
+        {% for item in data %}
+            <li>
+                <strong>{{ item.title }}</strong><br>
+                <a href="{{ item.link }}">{{ item.link }}</a><br>
+                <p>{{ item.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
